@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        if (nums.size()<3)
+            return 0;
+        
+        sort(nums.begin(), nums.end());
+        int sum_res = INT_MAX;
+        
+        for(vector<int>::iterator it1=nums.begin();it1!=nums.end()-2;++it1){
+            vector<int>::iterator it2 = it1+1, it3 = nums.end()-1;
+            
+            while(it2!=it3){
+                int sum_curr = *it1 + *it2 + *it3;
+                
+                if(sum_curr==target)
+                    return target;
+                else if(sum_curr<target)
+                    ++it2;
+                else
+                    --it3;
+            
+                if(sum_res==INT_MAX||abs(sum_curr-target)<abs(sum_res-target))
+                    sum_res = sum_curr;
+            }
+        }
+        return sum_res;
+    }
+};
