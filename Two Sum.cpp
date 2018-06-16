@@ -1,17 +1,16 @@
 class Solution {
 public:
-    vector<int> twoSum(vector<int> &numbers, int target) {
-        map<int, int> aMap;
-        vector<int> myVec;
-        int index=0;
-        for(vector<int>::iterator iter=numbers.begin(); iter!=numbers.end(); iter++, index++){
-            if(aMap.find(target-*iter)!=aMap.end()){
-                myVec.push_back(aMap[target-*iter]+1);
-                myVec.push_back(index+1);
-                return myVec;
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> res;
+        unordered_map<int, int> mymap;
+        for(unsigned int i=0;i<nums.size();++i){
+            if(mymap.find(target-nums[i])==mymap.end()){
+                mymap[nums[i]] = i;
             }
             else{
-                aMap.insert(pair<int, int> (*iter, index));
+                res.push_back(mymap[target-nums[i]]);
+                res.push_back(i);
+                return res;
             }
         }
     }
