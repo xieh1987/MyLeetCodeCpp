@@ -12,3 +12,20 @@ public:
         return res;
     }
 };
+
+/***********************************************
+//Using hashmap to find pairs
+class Solution {
+public:
+    int findPairs(vector<int>& nums, int k) {
+        int res = 0;
+        unordered_map<int, int> mymap;
+        for(auto num:nums) ++mymap[num];
+        for(auto i:mymap){
+            if(k==0&&i.second>1) ++res;
+            if(k>0&&mymap.find(i.first+k)!=mymap.end()) ++res;
+        }
+        return res;
+    }
+};
+************************************************/
