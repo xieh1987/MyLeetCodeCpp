@@ -11,7 +11,7 @@ public:
                 ++left;
             }
             else
-                sum += nums[++right];
+                sum += nums[++right];   //note here, ++right can be out of range, but [] operator doesn't check, return 0
         }
         return len;
     }
