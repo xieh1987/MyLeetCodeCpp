@@ -14,3 +14,26 @@ public:
         return res[len];
     }
 };
+
+/***************************************************************
+ * double pointers
+ *
+class Solution {
+public:
+    int numDecodings(string s) {
+        int len = s.length();
+        if(len==0||s[0]=='0') return 0;
+        int left = 1, right = 1;
+        for(int i=1;i<len;++i){
+            int curr = 0;
+            if(s[i]>'0')
+                curr = right;
+            if(s.substr(i-1,2)>="10"&&s.substr(i-1,2)<="26")
+                curr += left;
+            left = right;
+            right = curr;
+        }
+        return right;
+    }
+};
+*/
