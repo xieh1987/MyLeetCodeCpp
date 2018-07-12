@@ -24,3 +24,32 @@ public:
     }
 };
 */
+
+/*Using Union-Find*/
+class Solution {
+public:
+    int findCircleNum(vector<vector<int>>& M) {
+        int len = M.size();
+        int res = len;
+        vector<int> root(len);
+        for(auto i=0;i<len;++i) root[i] = i;
+        
+        for(auto i=0;i<len;++i){
+            for(auto j=0;j<len;++j){
+                int r_i = getRoot(root, i);
+                int r_j = getRoot(root, j);
+                if(M[i][j]&&r_i!=r_j){
+                    root[r_j] = r_i;
+                    --res;
+                }
+            }
+        }
+        return res;
+    }
+    
+    int getRoot(vector<int>& root, int id){
+        while(root[id]!=id)
+            id = root[id];
+        return id;
+    }
+};
