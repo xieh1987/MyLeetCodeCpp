@@ -25,21 +25,13 @@ public:
     bool helper(vector<vector<char>>& board, vector<vector<bool>>& visited, int row, int col, string word)
     {
         if(word=="") return true;
-        if(row<0||row>=board.size()) return false;
-        if(col<0||col>=board[0].size()) return false;
-        if(!visited[row][col]&&board[row][col]==word[0])
-        {
-            visited[row][col] = true;
-            if(helper(board, visited, row-1, col, word.substr(1))
-              ||helper(board, visited, row+1, col, word.substr(1))
-              ||helper(board, visited, row, col-1, word.substr(1))
-              ||helper(board, visited, row, col+1, word.substr(1))) return true;
-            else
-            {
-                visited[row][col] = false;
-                return false;
-            }
-        }
-        else return false;
+        if(row<0||row>=board.size()||col<0||col>=board[0].size()||visited[row][col]||board[row][col]!=word[0]) return false;
+        visited[row][col] = true;
+        if(helper(board, visited, row-1, col, word.substr(1))
+          ||helper(board, visited, row+1, col, word.substr(1))
+          ||helper(board, visited, row, col-1, word.substr(1))
+          ||helper(board, visited, row, col+1, word.substr(1))) return true;
+        visited[row][col] = false;
+        return false;
     }
 };
