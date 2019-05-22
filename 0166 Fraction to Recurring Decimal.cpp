@@ -12,7 +12,7 @@ public:
         long long rm = num % den * 10;
         if(!rm) return res;
         res += '.';
-        unordered_map<int, int> m;
+        unordered_map<long long, int> m;
         int id = res.size();
         while(rm) {
             if(m.find(rm)!=m.end()) {
