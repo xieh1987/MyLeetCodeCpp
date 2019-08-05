@@ -25,7 +25,7 @@ public:
         int l = line.size();
         if(lastline || l==1) {
             for(int i=0;i<l;i++) {
-                if(l!=1 && i!=l-1) res += line[i] + " ";
+                if(i!=l-1) res += line[i] + " ";
                 else res += line[i];
             }
             space -= line.size() - 1;
