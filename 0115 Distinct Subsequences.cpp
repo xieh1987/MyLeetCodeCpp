@@ -20,3 +20,26 @@ public:
         return (int)dp[m-1][n-1];
     }
 };
+
+/*DFS: TLE
+class Solution {
+public:
+    int numDistinct(string s, string t) {
+        long long res = 0;
+        helper(s, t, 0, 0, res);
+        return res;
+    }
+    
+    void helper(string& s, string& t, int pos1, int pos2, long long& res) {
+        if(pos2>=t.size()) {
+            res++;
+            return;
+        }
+        for(int i=pos1;i<s.size();i++) {
+            if(s[i]==t[pos2]) {
+                helper(s, t, i + 1, pos2 + 1, res);
+            }
+        }
+    }
+};
+*/
