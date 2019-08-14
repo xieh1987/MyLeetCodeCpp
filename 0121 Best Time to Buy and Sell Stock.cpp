@@ -1,3 +1,4 @@
+/*DP
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -13,5 +14,20 @@ public:
             lowest[i] = lowest[i-1]<prices[i]? lowest[i-1] : prices[i];
         }
         return max_profit[n-1];
+    }
+};
+*/
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int m = prices.size();
+        if(m<2) return 0;
+        int res = 0, mn = INT_MAX;
+        for(int i=0;i<m;i++) {
+            res = max(res, prices[i] - mn);
+            mn = min(mn, prices[i]);
+        }
+        return res;
     }
 };
