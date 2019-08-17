@@ -1,3 +1,43 @@
+//BFS
+class Solution {
+public:
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        int res = 1;
+        queue<string> q;
+        q.push(beginWord);
+        q.push(" ");
+        vector<bool> visited(wordList.size(), false);
+        while(!q.empty()) {
+            string t = q.front(); q.pop();
+            if(t==endWord) return res;
+            if(t==" "&&!q.empty()) {
+                q.push(" ");
+                res++;
+            }
+            else {
+                for(int i=0;i<wordList.size();i++) {
+                    if(!visited[i]) {
+                        if(transform(wordList[i], t)) {
+                            visited[i] = true;
+                            q.push(wordList[i]);
+                        }
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+    
+    bool transform(string& w1, string& w2) {
+        int count = 0;
+        for(int i=0;i<w1.size();i++) {
+            if(w1[i]!=w2[i]) count++;
+        }
+        return count==1;
+    }
+};
+
+/*
 class Solution {
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
@@ -45,3 +85,4 @@ public:
         return 0;
     }
 };
+*/
