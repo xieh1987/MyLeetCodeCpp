@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     string getHint(string secret, string guess) {
@@ -26,5 +27,27 @@ public:
             }
         }
         return to_string(bulls) + 'A' + to_string(cows) + 'B';
+    }
+};
+*/
+
+//Simpler version
+class Solution {
+public:
+    string getHint(string secret, string guess) {
+        int bull = 0, cow = 0;
+        unordered_map<char, int> m;
+        for(int i=0;i<secret.size();i++) {
+            if(secret[i]==guess[i]) bull++;
+            else {
+                if(m.find(secret[i])!=m.end()&&m[secret[i]]<0)
+                    cow++;
+                m[secret[i]]++;
+                if(m.find(guess[i])!=m.end()&&m[guess[i]]>0)
+                    cow++;
+                m[guess[i]]--;
+            }
+        }
+        return to_string(bull) + 'A' + to_string(cow) + 'B';
     }
 };
