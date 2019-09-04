@@ -14,6 +14,20 @@ public:
     }
 };
 
+/*DP
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        vector<int> res(nums.size(), 0);
+        int j = 1;
+        for(int i=0;i<nums.size();i++) {
+            while(j<=i+nums[i]&&j<nums.size()) res[j++] = res[i] + 1;
+        }
+        return res[nums.size() - 1];
+    }
+};
+*/
+
 /* LTE solution: time complexity O(n^2)
 class Solution {
 public:
