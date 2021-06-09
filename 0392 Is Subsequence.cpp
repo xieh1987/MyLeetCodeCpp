@@ -1,6 +1,18 @@
 class Solution {
 public:
     bool isSubsequence(string s, string t) {
+        int i = 0, j = 0;
+        for(;i<s.size()&&j<t.size();j++) {
+            if(s[i]==t[j]) ++i;
+        }
+        return i==s.size();
+    }
+};
+
+/* DP
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
         int ls = s.size();
         int lt = t.size();
         vector<vector<bool>> res (ls+1, vector<bool>(lt+1, false));
@@ -15,3 +27,4 @@ public:
         return res[ls][lt];
     }
 };
+*/
